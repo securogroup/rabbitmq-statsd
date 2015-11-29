@@ -48,7 +48,7 @@ RabbitMQStats.prototype.sendOverview = function(callback) {
       return callback(err, null);
     }
 
-    var payload = data.object_totals;
+    var payload = {object_totals: data.object_totals, message_stats: data.message_stats, queue_totals: data.queue_totals};
     console.log('Sending rabbitmq overview data');
     this.send(payload, this._prefix);
     callback(null, payload);
